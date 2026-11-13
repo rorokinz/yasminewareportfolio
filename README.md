@@ -1,6 +1,6 @@
 # Player Pulse
 
-A small, local campaign planner and community feedback workspace prepared for Yasmine Ware's social media and community internship portfolio. This independent project was developed with AI assistance. It is not a Riot Games product, commissioned campaign, or prior employer deliverable.
+A small, local campaign planner and community feedback workspace prepared for Yasmine Ware's social media and community internship portfolio. This is not a Riot Games product, commissioned campaign, or prior employer deliverable.
 
 ## Open the demo
 
@@ -28,23 +28,4 @@ Changes exist only in the current tab and reset on refresh. No browser storage o
 ## Tests
 
 With Node.js installed, run `npm test` or `node --test tests/core.test.js`. No packages are required. Tests cover weighted rates, zero denominators, CSV escaping/parsing, invalid data, and scheduling gates.
-
-## GitHub upload
-
-1. Unzip the provided project archive.
-2. Create a new GitHub repository, for example `player-pulse`.
-3. Choose **Add file > Upload files** and upload the files and tests folder **inside** this folder.
-4. Commit the files. Put the repository URL in the application's GitHub field if it accepts a link. Do not paste a ZIP filename into a URL field.
-5. Optional: enable GitHub Pages from the main branch root to host the static demo. This package does not publish anything automatically.
-
-## Before discussing it in an interview
-
-Review the code and be able to explain the metric denominator, scheduling check, CSV validation, and limitations. Credit AI assistance accurately; the project is a new independent work sample rather than historical professional coding experience.
-
-## Next iteration
-
-Validate the workflow with community managers; add assigned feedback owners, audit history, time-zone aware scheduling, and role-based permissions before considering real operations. Real platform integrations require appropriate authentication and data handling. No real-world publishing or automated moderation is included here.
-
-## Validation status
-
 Seven automated core tests pass. JavaScript syntax is checked. Browser rendering was not verified in the authoring environment; open index.html and check the controls, CSV import, and layout before submitting.
