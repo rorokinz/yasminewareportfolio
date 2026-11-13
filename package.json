@@ -1,0 +1,1 @@
+{"name":"player-pulse-portfolio","version":"1.0.0","private":true,"description":"Independent campaign planning and community feedback prototype","scripts":{"test":"node --test tests/core.test.js"}}

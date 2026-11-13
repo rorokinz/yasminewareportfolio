@@ -1,0 +1,8 @@
+const test=require('node:test');const assert=require('node:assert/strict');const p=require('../core.js');
+test('weighted engagement uses totals rather than averaging rates',()=>{const s=p.summarize([{impressions:100,likes:50},{impressions:900,likes:0}]);assert.equal(s.rate,.05);});
+test('zero impressions are unavailable, not infinite',()=>assert.equal(p.summarize([{impressions:0,likes:1}]).rate,null));
+test('CSV parser handles quoted commas, quotes, multiline fields and CRLF',()=>assert.deepEqual(p.parseCSV('a,b\r\n"hi, there","line\n""two"""'),[['a','b'],['hi, there','line\n"two"']]));
+test('CSV rejects malformed quotes and blank numeric values',()=>{assert.throws(()=>p.parseCSV('"unfinished'));assert.throws(()=>p.importPosts('title,platform,impressions,likes,comments,shares,saves\nPost,TikTok,,1,0,0,0'));});
+test('CSV rejects unsupported platform and negative counts',()=>{assert.throws(()=>p.importPosts('title,platform,impressions,likes,comments,shares,saves\nPost,Unknown,1,1,0,0,0'));assert.throws(()=>p.importPosts('title,platform,impressions,likes,comments,shares,saves\nPost,TikTok,1,-1,0,0,0'));});
+test('CSV exports protect spreadsheet formula prefixes',()=>{const csv=p.exportCSV([{title:'=1+1',platform:'X',impressions:0,likes:0,comments:0,shares:0,saves:0}]);assert.ok(csv.includes('"\'=1+1"'));});
+test('scheduling requires approval and an owner',()=>{assert.ok(p.schedulingError({approval:'Draft',owner:'A'},'Scheduled'));assert.ok(p.schedulingError({approval:'Approved',owner:'Assign owner'},'Scheduled'));assert.equal(p.schedulingError({approval:'Approved',owner:'A'},'Scheduled'),null);});
